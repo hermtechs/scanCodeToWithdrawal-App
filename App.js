@@ -1,5 +1,4 @@
 // import { StatusBar } from 'expo-status-bar';
-// import { StyleSheet, Text, View } from 'react-native';
 
 // export default function App() {
 //   return (
@@ -18,8 +17,10 @@
 //     justifyContent: 'center',
 //   },
 // });
+// import React, { useState } from "react";
 import { StatusBar } from "expo-status-bar";
-import React, { useState } from "react";
+import * as React from 'react';
+import { NavigationContainer } from '@react-navigation/native';
 import {
   StyleSheet,
   Text,
@@ -31,19 +32,22 @@ import {
 } from "react-native";
  
 export default function App() {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
- 
+  // const [email, setEmail] = useState("");
+  // const [password, setPassword] = useState("");
+  // <NavigationContainer>{/* Rest of your app code */}</NavigationContainer>
+
   return (
+    <NavigationContainer>{
     <View style={styles.container}>
-      <Image style={styles.image} source={require("./assets/scan-icon.png")} />
- 
+      <Image style={styles.image} source={require("./assets/qnb-logo.png")} />
+    
       <StatusBar style="auto" />
+      <View style={styles.loginContainer}>
       <View style={styles.inputView}>
         <TextInput
           style={styles.TextInput}
           placeholder="Email."
-          placeholderTextColor="#fff"
+          placeholderTextColor="#060632"
           onChangeText={(email) => setEmail(email)}
         />
       </View>
@@ -52,7 +56,8 @@ export default function App() {
         <TextInput
           style={styles.TextInput}
           placeholder="Password."
-          placeholderTextColor="#fff"
+          placeholderTextColor="#060632"
+          outlineStyle= "none"
           secureTextEntry={true}
           onChangeText={(password) => setPassword(password)}
         />
@@ -65,31 +70,33 @@ export default function App() {
     <TouchableOpacity style={styles.loginBtn} >
         <Text style={styles.loginText}>LOGIN</Text>
       </TouchableOpacity>
+      </View>
     </View>
+    } </NavigationContainer>
   );
 }
  
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#b9b9fe",
+    backgroundColor: "#fff",
+    opacity:0.9,
     alignItems: "center",
     justifyContent: "center",
   },
  
   image: {
     marginBottom: 60,
-    height:200,
-    width:200
+    height:150,
+    width:250
   },
  
   inputView: {
-    backgroundColor: "#168aff",
+    backgroundColor: "#ccc",
     borderRadius: 5,
-    width: "70%",
-    height: 45,
+    width: "57%",
+    height: 35,
     marginBottom: 20,
- 
     alignItems: "center",
   },
  
@@ -103,19 +110,34 @@ const styles = StyleSheet.create({
   forgot_button: {
     height: 30,
     marginBottom: 30,
+    color:"#ccc",
+    border:"2px solid #fff",
+    padding:2,
+    borderRadius:6
   },
  
   loginBtn: {
-    width: "70%",
-    borderRadius: 5,
-    height: 50,
+    width: "60%",
+    // borderRadius: 5,
+    height: 35,
     alignItems: "center",
     fontSize:20,
     justifyContent: "center",
-    marginTop: 40,
-    backgroundColor: "#168aff",
+    marginTop: 35,
+    backgroundColor: "#fff",
+    borderRadius:4
   },
   loginText:{
-    color:"#fff"
+    color:"#060632",
+    fontWeight:"600"
+  },
+  loginContainer:{
+    flex:1,
+    justifyContent:"center",
+    alignItems:"center",
+    width:"100%",
+    backgroundColor:'#870052',
+    borderTopRightRadius:25,
+    borderTopLeftRadius:25
   }
 });
